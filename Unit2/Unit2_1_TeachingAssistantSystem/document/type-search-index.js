@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"TeachingAssistant","l":"ClassroomTask"},{"p":"TeachingAssistant","l":"Experiment"},{"p":"TeachingAssistant","l":"Homework"},{"p":"TeachingAssistant","l":"Student"},{"p":"TeachingAssistant","l":"Task"},{"p":"TeachingAssistant","l":"TaskScore"},{"p":"TeachingAssistant","l":"TeachingAssistantSystem"}]

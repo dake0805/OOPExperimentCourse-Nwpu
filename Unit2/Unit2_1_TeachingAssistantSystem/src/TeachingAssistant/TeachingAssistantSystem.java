@@ -313,7 +313,7 @@ public class TeachingAssistantSystem {
      */
     public void displayCatalogTask() {
         for (int i = 0; i < catalogTask.size(); ++i) {
-            printTask(catalogTask.get(i));
+            stdOut.println(catalogTask.get(i).toString());
         }
     }
 
@@ -325,12 +325,14 @@ public class TeachingAssistantSystem {
      */
     public void displayTask(int taskCode) throws IOException {
 
-        try {
-            printTask(catalogTask.get(taskCode - 1));
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Number is out of range");
-            return;
+
+        for (Task task : catalogTask) {
+            if (task.getCode() == taskCode) {
+                stdOut.println(task.toString());
+                return;
+            }
         }
+        stdErr.println("No task has this task code");
     }
 
     /**
@@ -355,45 +357,16 @@ public class TeachingAssistantSystem {
      * @param studentCode the code of the student
      */
     public void displayTaskList(int studentCode) {
-        try {
-            for (Student student : studentDatabase) {
-                if (student.getCode() == studentCode) {
-                    for (int i = 0; i < student.getTaskScore().size(); ++i) {
-                        Task task = student.getTaskScore().get(i).getTask();
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-                        if (Homework.class.isInstance(task)) {
-                            System.out.println("Homework: " + "title = " + (task).getTitle() + ", "
-                                    + "code = " + task.getCode() + ", "
-                                    + "description = " + task.getDescription() + ", "
-                                    + "creationDate = " + dateFormat.format(task.getCreationDate()) + ", "
-                                    + "state = " + task.getState() + ", "
-                                    + "deadline = " + dateFormat.format(((Homework) (task)).getDeadline())
-                                    + ", score = " + studentDatabase.get(studentCode - 1).getTaskScore().get(i).getScore());
-                        } else if (ClassroomTask.class.isInstance(task)) {
-                            System.out.println("Classroom Task: " + "title = " + (task).getTitle() + ", "
-                                    + "code = " + task.getCode() + ", "
-                                    + "description = " + task.getDescription() + ", "
-                                    + "creationDate = " + dateFormat.format(task.getCreationDate()) + ", "
-                                    + "state = " + task.getState()
-                                    + ", score = " + studentDatabase.get(studentCode - 1).getTaskScore().get(i).getScore());
-                        } else {
-                            System.out.println("Experiment: " + "title = " + ((task)).getTitle() + ", "
-                                    + "code = " + task.getCode() + ", "
-                                    + "description = " + task.getDescription() + ", "
-                                    + "creationDate = " + dateFormat.format(task.getCreationDate()) + ", "
-                                    + "state = " + task.getState() + ", "
-                                    + "deadline = " + dateFormat.format(((Experiment) (task)).getDeadline()) + ", "
-                                    + "numberOfJavaFile = " + ((Experiment) (task)).getNumberOfJavaFile()
-                                    + ", score = " + studentDatabase.get(studentCode - 1).getTaskScore().get(i).getScore());
-                        }
-                    }
+
+        for (Student student : studentDatabase) {
+            if (student.getCode() == studentCode) {
+                for (int i = 0; i < student.getTaskScore().size(); ++i) {
+                    stdOut.println(student.getTaskScore().get(i).getTask().toString() + ", score = " + student.getTaskScore().get(i).getScore());
                 }
+                stdErr.println("The number is Out of range");
             }
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("The number is Out of range");
         }
     }
-
 
     /**
      * register the current task then the current task will be added to the
@@ -407,7 +380,8 @@ public class TeachingAssistantSystem {
 
         while (currTask == null)
             currTask = readTask();
-        catalogTask.add(currTask);
+        catalogTask.add(currentTask);
+        currentTask = currTask;
         stdOut.println("register current task successfully!");
 
     }
@@ -465,6 +439,11 @@ public class TeachingAssistantSystem {
 
     }
 
+    /**
+     * remove the task from the task catalog
+     *
+     * @param task the task you want to remove
+     */
     public void removeTaskFromCatalog(Task task) {
         boolean isRemoved = catalogTask.remove(task);
         if (isRemoved) {
@@ -525,34 +504,5 @@ public class TeachingAssistantSystem {
         stdErr.println("There are no student with that code");
         stdErr.flush();
         return null;
-
-    }
-
-    public void printTask(Task task) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-        if (Homework.class.isInstance(task)) {
-            System.out.println("Homework: " + "title = " + (task).getTitle() + ", "
-                    + "code = " + task.getCode() + ", "
-                    + "description = " + task.getDescription() + ", "
-                    + "creationDate = " + dateFormat.format(task.getCreationDate()) + ", "
-                    + "state = " + task.getState() + ", "
-                    + "deadline = " + dateFormat.format(((Homework) (task)).getDeadline()));
-        } else if (ClassroomTask.class.isInstance(task)) {
-            System.out.println("Classroom Task: " + "title = " + (task).getTitle() + ", "
-                    + "code = " + task.getCode() + ", "
-                    + "description = " + task.getDescription() + ", "
-                    + "creationDate = " + dateFormat.format(task.getCreationDate()) + ", "
-                    + "state = " + task.getState());
-        } else {
-            System.out.println("Experiment: " + "title = " + ((task)).getTitle() + ", "
-                    + "code = " + task.getCode() + ", "
-                    + "description = " + task.getDescription() + ", "
-                    + "creationDate = " + dateFormat.format(task.getCreationDate()) + ", "
-                    + "state = " + task.getState() + ", "
-                    + "deadline = " + dateFormat.format(((Experiment) (task)).getDeadline()) + ", "
-                    + "numberOfJavaFile = " + ((Experiment) (task)).getNumberOfJavaFile());
-        }
     }
 }
-
-
