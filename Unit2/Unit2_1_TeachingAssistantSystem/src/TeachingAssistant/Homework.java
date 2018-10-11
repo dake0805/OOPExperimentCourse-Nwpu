@@ -1,4 +1,4 @@
-package TeachingAssistant;
+package teachingAssistant;
 
 import java.util.*;
 import java.text.*;
@@ -27,6 +27,16 @@ public class Homework extends Task {
         super(code, title, description, creationDate, state);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
         this.deadline = dateFormat.parse(deadline);
+    }
+
+    /**
+     * express the homework task as a fixed format overrides method in Class Task
+     *
+     * @return return the homework as String
+     */
+    public String toString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        return ("Homework: " + super.toString() + ", deadline = " + dateFormat.format(deadline));
     }
 
     /**

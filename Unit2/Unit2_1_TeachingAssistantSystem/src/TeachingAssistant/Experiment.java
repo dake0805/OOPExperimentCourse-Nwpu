@@ -1,4 +1,4 @@
-package TeachingAssistant;
+package teachingAssistant;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -33,6 +33,17 @@ public class Experiment extends Task {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
         this.deadline = dateFormat.parse(deadline);
         this.numberOfJavaFile = numberOfJavaFile;
+    }
+
+    /**
+     * express the experiment task as a fixed format overrides method in Class Task
+     *
+     * @return return the experiment as String
+     */
+    public String toString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        return ("Experiment: " + super.toString() + ", deadline = " + dateFormat.format(deadline) + ", "
+                + "numberOfJavaFile = " + numberOfJavaFile);
     }
 
     /**

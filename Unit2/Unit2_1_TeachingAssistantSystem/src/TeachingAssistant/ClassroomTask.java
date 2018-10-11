@@ -1,4 +1,4 @@
-package TeachingAssistant;
+package teachingAssistant;
 
 import java.text.ParseException;
 import java.util.List;
@@ -22,6 +22,15 @@ public class ClassroomTask extends Task {
      */
     public ClassroomTask(int code, String title, String description, String creationDate, int state) throws ParseException {
         super(code, title, description, creationDate, state);
+    }
+
+    /**
+     * express the classroom task as a fixed format overrides method in Class Task
+     *
+     * @return return the classroom task as String
+     */
+    public String toString() {
+        return ("Classroom task: " + super.toString());
     }
 
     /**

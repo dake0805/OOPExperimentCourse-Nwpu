@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"TeachingAssistant"}]
+packageSearchIndex = [{"l":"teachingAssistant"}]

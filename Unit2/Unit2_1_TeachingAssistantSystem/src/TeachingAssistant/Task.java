@@ -1,4 +1,4 @@
-package TeachingAssistant;
+package teachingAssistant;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -52,21 +52,11 @@ public class Task {
      */
     public String toString() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-        String toStr = "title = " + (this).getTitle() + ", "
+        return ("title = " + this.getTitle() + ", "
                 + "code = " + this.getCode() + ", "
                 + "description = " + this.getDescription() + ", "
                 + "creationDate = " + dateFormat.format(this.getCreationDate()) + ", "
-                + "state = " + this.getState();
-        if (Homework.class.isInstance(this)) {
-            return ("Homework: " + toStr
-                    + ", deadline = " + dateFormat.format(((Homework) (this)).getDeadline()));
-        } else if (ClassroomTask.class.isInstance(this)) {
-            return ("Classroom this: " + toStr);
-        } else {
-            return ("Experiment: " + toStr
-                    + ", deadline = " + dateFormat.format(((Experiment) (this)).getDeadline()) + ", "
-                    + "numberOfJavaFile = " + ((Experiment) (this)).getNumberOfJavaFile());
-        }
+                + "state = " + this.getState());
     }
 
     /**

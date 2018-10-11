@@ -1,4 +1,4 @@
-package TeachingAssistant;
+package teachingAssistant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +25,15 @@ public class Student {
         this.code = code;
         this.name = name;
         this.taskScore = new ArrayList<>();
+    }
+
+    /**
+     * express the student as a fixed format overrides method in java.lang.Object
+     *
+     * @return return the student as String
+     */
+    public String toString() {
+        return ("Student: " + "name = " + name + ", code = " + code);
     }
 
     /**

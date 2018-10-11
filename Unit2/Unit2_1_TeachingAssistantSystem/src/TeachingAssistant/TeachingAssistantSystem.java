@@ -1,11 +1,10 @@
-package TeachingAssistant;
+package teachingAssistant;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -324,8 +323,6 @@ public class TeachingAssistantSystem {
      * @throws IOException
      */
     public void displayTask(int taskCode) throws IOException {
-
-
         for (Task task : catalogTask) {
             if (task.getCode() == taskCode) {
                 stdOut.println(task.toString());
@@ -363,9 +360,10 @@ public class TeachingAssistantSystem {
                 for (int i = 0; i < student.getTaskScore().size(); ++i) {
                     stdOut.println(student.getTaskScore().get(i).getTask().toString() + ", score = " + student.getTaskScore().get(i).getScore());
                 }
-                stdErr.println("The number is Out of range");
+                return;
             }
         }
+        stdErr.println("The student code is out of range");
     }
 
     /**
@@ -377,7 +375,6 @@ public class TeachingAssistantSystem {
      */
     public void registerCurrentTask() throws IOException {
         Task currTask = readTask();
-
         while (currTask == null)
             currTask = readTask();
         catalogTask.add(currentTask);
@@ -469,7 +466,6 @@ public class TeachingAssistantSystem {
             for (Task task : catalogTask) {
                 if (task.getCode() == taskCode) {
                     return task;
-
                 }
             }
         } catch (NumberFormatException nfe) {

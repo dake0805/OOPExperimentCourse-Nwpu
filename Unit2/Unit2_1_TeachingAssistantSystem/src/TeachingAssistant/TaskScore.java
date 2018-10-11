@@ -1,4 +1,4 @@
-package TeachingAssistant;
+package teachingAssistant;
 
 /**
  * this class has score of the task
