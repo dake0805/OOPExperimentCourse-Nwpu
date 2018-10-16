@@ -446,7 +446,6 @@ public class TeachingAssistantSystem {
         if (isRemoved) {
             stdOut.println("remove task successfully!");
         }
-
     }
 
     /**

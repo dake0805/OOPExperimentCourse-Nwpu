@@ -59,65 +59,37 @@ public class CoffeeShopApplication {
                 String strCoffee = stdIn.readLine();
                 StringTokenizer coffeeToken = new StringTokenizer(strCoffee, "_");
                 if (coffeeToken.countTokens() > 4) {
-                    throw new MoreThanFourValues();
+                    stdErr.println("Entered more than four values, Need 4 elements in one line\n" +
+                            "Please enter again");
+                    continue;
                 }
                 if (coffeeToken.countTokens() < 4) {
-                    throw new LessThanFourValues();
+                    stdErr.println("Entered less than four values, Need 4 elements in one line\n" +
+                            "Please enter again");
+                    continue;
                 }
                 int id = Integer.parseInt(coffeeToken.nextToken());
-                if (id < 0 || id > 50) {
-                    throw new WrongIdNumber();
+                if (id < MIN_NUMBER || id > MAX_NUMBER) {
+                    stdErr.println("Id should more than 0 and less than 50\n" +
+                            "Please enter again");
+                    continue;
                 }
                 String name = coffeeToken.nextToken();
                 String taste = coffeeToken.nextToken();
                 double cost = Double.parseDouble(coffeeToken.nextToken());
-                if (cost < 2 || cost > 50) {
-                    throw new WrongCostNumber();
+                if (cost < MIN_COST || cost > MAX_COST) {
+                    stdErr.println("Cost should more than 2 and less than 50\n"
+                            + "Please enter again");
+                    continue;
                 }
 
                 coffee = new Coffee(id, name, taste, cost);
                 stdOut.println("Entered success");
                 return coffee;
-            } catch (MoreThanFourValues e) {
-                stdErr.println("Entered more than four values, Need 4 elements in one line\n" +
-                        "Please enter again");
-            } catch (LessThanFourValues e) {
-                stdErr.println("Entered less than four values, Need 4 elements in one line\n" +
-                        "Please enter again");
             } catch (NumberFormatException e) {
                 stdErr.println("Number format is not valid\n"
                         + "Please enter again");
-            } catch (WrongIdNumber e) {
-                stdErr.println("Id should more than 0 and less than 50\n" +
-                        "Please enter again");
-            } catch (WrongCostNumber e) {
-                stdErr.println("Cost should more than 2 and less than 50\n"
-                        + "Please enter again");
             }
         }
-    }
-}
-
-class MoreThanFourValues extends Exception {
-    public MoreThanFourValues() {
-        super();
-    }
-}
-
-class LessThanFourValues extends Exception {
-    public LessThanFourValues() {
-        super();
-    }
-}
-
-class WrongIdNumber extends Exception {
-    public WrongIdNumber() {
-        super();
-    }
-}
-
-class WrongCostNumber extends Exception {
-    public WrongCostNumber() {
-        super();
     }
 }
