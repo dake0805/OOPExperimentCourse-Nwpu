@@ -48,6 +48,10 @@ public class CoffeeShopApplication {
     }
 
     private int getChoice() throws IOException {
+        stdOut.println("• Choice 0 terminates the program." + "\n" +
+                "• Choice 1 adds a coffee to the coffee shop." + "\n" +
+                "• Choice 2 displays the information of all the coffees in coffee shop." + "\n" +
+                "• Choice 3 displays the total cost of all the coffee in the shop.");
         int choice = Integer.parseInt(stdIn.readLine());
         return choice;
     }
