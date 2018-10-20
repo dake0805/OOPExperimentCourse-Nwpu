@@ -10,6 +10,18 @@ public class XMLSalesFormatter implements SalesFormatter {
     }
 
     public String formatSales(Sales sales) {
-        return null;
+        String str = "<Sales>\n";
+        for (Order order : sales) {
+            str += "  <Order total=\"" + order.getTotalCost() + "\">\n";
+            for (OrderItem orderItem : order) {
+                str += "    <OrderItem quantity=\"" + orderItem.getQuantity() + "\" " +
+                        "price=\"" + orderItem.getProduct().getPrice() + "\">" +
+                        orderItem.getProduct().getCode() + "</OrderItem>\n";
+
+            }
+            str += "  </Order>\n";
+        }
+        str+="</Sales>\n";
+        return str;
     }
 }

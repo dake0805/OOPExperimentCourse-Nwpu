@@ -187,6 +187,7 @@ public class GourmetCoffee {
 
         do {
             try {
+                Thread.sleep(100);
                 stdErr.println();
                 stdErr.print("[0]  Quit\n"
                         + "[1]  Display sales (Plain Text)\n"
@@ -206,6 +207,7 @@ public class GourmetCoffee {
                 }
             } catch (NumberFormatException nfe) {
                 stdErr.println(nfe);
+            } catch (InterruptedException e) {
             }
         } while (true);
 
