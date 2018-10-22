@@ -245,19 +245,18 @@ public class GourmetCoffee {
             if (choice == 1) {
 
                 this.setSalesFormatter(PlainTextSalesFormatter.getSingletonInstance());
-                displaySales();
 
             } else if (choice == 2) {
 
                 this.setSalesFormatter(HTMLSalesFormatter.getSingletonInstance());
-                displaySales();
+
 
             } else if (choice == 3) {
 
                 this.setSalesFormatter(XMLSalesFormatter.getSingletonInstance());
-                displaySales();
-            }
 
+            }
+            displaySales();
             choice = getChoice();
         }
     }
