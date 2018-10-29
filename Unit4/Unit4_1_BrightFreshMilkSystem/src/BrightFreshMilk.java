@@ -1,9 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -112,24 +107,28 @@ public class BrightFreshMilk {
      * Presents the user with a menu of options and executes the selected task.
      */
     private void run() throws IOException {
+        try {
 
-        int choice = getChoice();
+            Thread.sleep(100);
+            int choice = getChoice();
 
-        while (choice != 0) {
-            if (choice == 1) {
-                displayCatalog();
-            } else if (choice == 2) {
-                this.salesFormatter = PlainTextSalesFormatter.getSingletonInstance();
-                writeFile(readFilename(), this.salesFormatter.formatSales(this.sales));
-            } else if (choice == 3) {
-                this.salesFormatter = HTMLSalesFormatter.getSingletonInstance();
-                writeFile(readFilename(), this.salesFormatter.formatSales(this.sales));
-            } else if (choice == 4) {
-                this.salesFormatter = XMLSalesFormatter.getSingletonInstance();
-                writeFile(readFilename(), this.salesFormatter.formatSales(this.sales));
+            while (choice != 0) {
+                if (choice == 1) {
+                    displayCatalog();
+                } else if (choice == 2) {
+                    this.salesFormatter = PlainTextSalesFormatter.getSingletonInstance();
+                    writeFile(readFilename(), this.salesFormatter.formatSales(this.sales));
+                } else if (choice == 3) {
+                    this.salesFormatter = HTMLSalesFormatter.getSingletonInstance();
+                    writeFile(readFilename(), this.salesFormatter.formatSales(this.sales));
+                } else if (choice == 4) {
+                    this.salesFormatter = XMLSalesFormatter.getSingletonInstance();
+                    writeFile(readFilename(), this.salesFormatter.formatSales(this.sales));
+                }
+                Thread.sleep(100);
+                choice = getChoice();
             }
-
-            choice = getChoice();
+        } catch (InterruptedException e) {
         }
     }
 
@@ -190,8 +189,9 @@ public class BrightFreshMilk {
      * @param content  data to be stored
      */
     private void writeFile(String filename, String content) throws IOException {
-
-        //to do
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename));
+        bufferedWriter.write(content);
+        bufferedWriter.close();
     }
 
     /**

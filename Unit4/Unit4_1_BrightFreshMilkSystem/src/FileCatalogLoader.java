@@ -34,6 +34,7 @@ public class FileCatalogLoader implements CatalogLoader {
             } else if (line.startsWith("MilkDrink")) {
                 products.add(readMilkDrink(line));
             }
+            line = bufferedReader.readLine();
         }
         catalog = new Catalog(products);
         return catalog;
