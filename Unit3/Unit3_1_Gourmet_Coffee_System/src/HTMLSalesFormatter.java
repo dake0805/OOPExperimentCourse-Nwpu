@@ -1,14 +1,33 @@
+/**
+ * definition of class HTMLSalesFormatter
+ *
+ * @author hzy
+ */
 public class HTMLSalesFormatter implements SalesFormatter {
     private static HTMLSalesFormatter singletonInstance = new HTMLSalesFormatter();
 
+    /**
+     * constructor
+     */
     private HTMLSalesFormatter() {
 
     }
 
+    /**
+     * get static object singletonInstance
+     *
+     * @return singletonInstance
+     */
     public static HTMLSalesFormatter getSingletonInstance() {
         return singletonInstance;
     }
 
+    /**
+     * format sales to String
+     *
+     * @param sales
+     * @return String
+     */
     public String formatSales(Sales sales) {
         String str = "<html>\n" +
                 "  <body>\n" +

@@ -1,12 +1,9 @@
 import java.io.*;
-import java.util.*;
-//import java.text.*;
-
 
 /**
  * This class implements a gourmet coffee system.
  *
- * @author author name
+ * @author hzy
  * @version 1.1.0
  * @see Product
  * @see Coffee
