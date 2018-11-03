@@ -1,0 +1,26 @@
+<html>
+  <body>
+    <center><h2>Orders</h2></center>
+    <hr>
+    <h4>Total = 25</h4>
+      <p>
+        <b>code:</b> C001<br>
+        <b>quantity:</b> 5<br>
+        <b>price:</b> 5
+      </p>
+    <hr>
+    <h4>Total = 40</h4>
+      <p>
+        <b>code:</b> C002<br>
+        <b>quantity:</b> 2<br>
+        <b>price:</b> 10
+      </p>
+    <hr>
+    <h4>Total = 14</h4>
+      <p>
+        <b>code:</b> B002<br>
+        <b>quantity:</b> 1<br>
+        <b>price:</b> 14
+      </p>
+  </body>
+</html>
